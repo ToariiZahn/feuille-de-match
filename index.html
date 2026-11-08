@@ -2,13 +2,21 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#171717">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Feuille de match">
 <title>Feuille de match – Stade Poitevin Féminines</title>
 <style>
   :root{--noir:#171717;--or:#f2b51d;--or-clair:#fff1d6;--gris:#6a6a6a;--bord:#dedbd2;--fond:#f3f3f2;--ok:#176c45;--rouge:#b52b25}
   *{box-sizing:border-box}
   body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--fond);color:#202020}
-  header{background:var(--noir);color:#fff;border-bottom:4px solid var(--or);padding:14px 16px;display:flex;align-items:center;gap:14px}
+  header{background:var(--noir);color:#fff;border-bottom:4px solid var(--or);padding:max(14px,env(safe-area-inset-top)) 16px 14px;display:flex;align-items:center;gap:14px}
   .logo{width:72px;height:72px;object-fit:contain;flex:none;border-radius:50%;background:#fff}
   header h1{margin:0;font-size:1.3rem}
   header p{margin:4px 0 0;color:var(--or);font-size:.9rem}
@@ -541,6 +549,7 @@ document.addEventListener("click", e => {
 });
 
 load(); render();
+if("serviceWorker" in navigator && location.protocol.startsWith("http")) navigator.serviceWorker.register("sw.js").catch(()=>{});
 </script>
 </body>
 </html>
